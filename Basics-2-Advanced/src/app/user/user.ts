@@ -16,4 +16,9 @@ export class User {
   get altText(){
     return this.selectedUser.name;
   }
+
+  onClickUser(){
+      this.selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)] 
+
+  }
 }
