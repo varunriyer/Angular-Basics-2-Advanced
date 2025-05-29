@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { DUMMY_USERS } from '../test.users';
 @Component({
   selector: 'app-user',
   imports: [],
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './user.css'
 })
 export class User {
-
+  selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)] // to get a random
 }
