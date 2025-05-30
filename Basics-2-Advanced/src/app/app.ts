@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Header } from "./header/header";
 import { User } from "./user/user";
+import { DUMMY_USERS } from './test.users';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,5 @@ import { User } from "./user/user";
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'Basics-2-Advanced';
+  users = DUMMY_USERS;
 }
