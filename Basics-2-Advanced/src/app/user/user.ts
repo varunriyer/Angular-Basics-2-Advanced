@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { DUMMY_USERS } from '../test.users';
 @Component({
   selector: 'app-user',
@@ -7,18 +7,22 @@ import { DUMMY_USERS } from '../test.users';
   styleUrl: './user.css'
 })
 export class User {
-  selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)] // to get a random
+  selectedUser = signal(DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)]) // to get a random
 
-  get imagePath(){
-    return this.selectedUser.avatar;
-  }
+  imagePath = computed(() => this.selectedUser().avatar)
 
-  get altText(){
-    return this.selectedUser.name;
-  }
+  // get imagePath(){
+  //   return this.selectedUser.avatar; --> This is used when using zone.js (state management without signals)
+  // }
+
+  altText = computed(() => this.selectedUser().name);
+
+  // get altText(){
+  //   return this.selectedUser.name;
+  // }
 
   onClickUser(){
-      this.selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)] 
+      this.selectedUser.set(DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)] );
 
   }
 }
